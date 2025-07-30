@@ -43,6 +43,6 @@ fun Greeting(name: String = "Jose", @SuppressLint("ModifierParameter") modifier:
 @Composable
 fun GreetingPreview() {
     Lab2Theme {
-        Greeting("Android")
+        AppContent()
     }
 }
