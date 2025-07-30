@@ -40,6 +40,12 @@ fun AppContent() {
     }
 }
 
+/**
+ * Composable que muestra un mensaje de saludo en pantalla.
+ *
+ * @param name Nombre de la persona a saludar.
+ * @param modifier Modificador para aplicar estilos o comportamientos al componente.
+ */
 @Composable
 fun Greeting(name: String , @SuppressLint("ModifierParameter") modifier: Modifier = Modifier) {
     Text(
