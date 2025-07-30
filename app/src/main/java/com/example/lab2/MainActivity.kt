@@ -69,7 +69,7 @@ fun Greeting(
 @Preview(showBackground = true) // Indica que se debe mostrar el fondo en la previsualización
 @Composable
 fun GreetingPreview() {
-    Lab2Theme {
-        AppContent()
+    Lab2Theme { // Aplica el tema personalizado en la previsualización
+        AppContent() // Muestra el contenido principal de la app
     }
 }
