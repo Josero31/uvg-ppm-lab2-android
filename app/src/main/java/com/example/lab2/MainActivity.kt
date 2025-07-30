@@ -47,10 +47,13 @@ fun AppContent() {
  * @param modifier Modificador para aplicar estilos o comportamientos al componente.
  */
 @Composable
-fun Greeting(name: String , @SuppressLint("ModifierParameter") modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
+fun Greeting(
+    name: String, // Nombre que se mostrará en el saludo
+    @SuppressLint("ModifierParameter") modifier: Modifier = Modifier // Modificador opcional para el componente
+) {
+    Text( // Componente que muestra texto en pantalla
+        text = "Hello $name!", // Texto que se mostrará, incluyendo el nombre recibido
+        modifier = modifier // Aplica el modificador recibido como parámetro
     )
 }
 
