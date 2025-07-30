@@ -62,8 +62,11 @@ fun Greeting(
     )
 }
 
-
-@Preview(showBackground = true)
+/**
+ * Composable para previsualizar la interfaz en el editor de Android Studio.
+ * Permite ver cómo se verá la pantalla sin ejecutar la app.
+ */
+@Preview(showBackground = true) // Indica que se debe mostrar el fondo en la previsualización
 @Composable
 fun GreetingPreview() {
     Lab2Theme {
