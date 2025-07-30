@@ -15,16 +15,11 @@ import com.example.lab2.ui.theme.Lab2Theme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContent {
-            Lab2Theme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
+        super.onCreate(savedInstanceState) // Llama al método de la clase padre
+        enableEdgeToEdge() // Habilita el modo edge-to-edge para la interfaz
+        setContent { // Define el contenido de la actividad usando Compose
+            Lab2Theme { // Aplica el tema personalizado a la interfaz
+                AppContent() // Llama al composable principal que contiene la UI
             }
         }
     }
