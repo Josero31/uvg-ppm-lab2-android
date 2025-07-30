@@ -1,4 +1,4 @@
-package com.example.lab2
+package com.example.lab2 // Define el paquete donde se encuentra este archivo
 
 // Importaciones necesarias para la actividad y componentes de Jetpack Compose
 import android.annotation.SuppressLint // Permite suprimir advertencias específicas del compilador
@@ -70,7 +70,6 @@ fun AppContent() {
 
 /**
  * Composable que muestra un mensaje de saludo en pantalla.
- *
  * @param name Nombre de la persona a saludar.
  * @param modifier Modificador para aplicar estilos o comportamientos al componente.
  */
