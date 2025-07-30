@@ -14,6 +14,10 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.example.lab2.ui.theme.Lab2Theme
 
 class MainActivity : ComponentActivity() {
+    /**
+     * Método que se llama cuando la actividad es creada.
+     * @param savedInstanceState Estado guardado de la actividad (si existe).
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState) // Llama al método de la clase padre
         enableEdgeToEdge() // Habilita el modo edge-to-edge para la interfaz
