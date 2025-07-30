@@ -46,8 +46,10 @@ class MainActivity : ComponentActivity() {
  */
 @Composable
 fun AppContent() {
-    Scaffold( // Proporciona una estructura básica para la pantalla
-        modifier = Modifier.fillMaxSize() // Hace que el Scaffold ocupe todo el espacio disponible
+    Scaffold(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(Color.Cyan) // Aplica fondo celeste a toda la pantalla
     ) { innerPadding -> // innerPadding es el espacio interno que Scaffold proporciona a su contenido
         Greeting( // Llama al composable Greeting para mostrar el saludo
             name = "Jose", // Parámetro que indica el nombre a mostrar en el saludo
