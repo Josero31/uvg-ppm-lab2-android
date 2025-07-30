@@ -33,6 +33,10 @@ class MainActivity : ComponentActivity() {
     }
 }
 
+/**
+ * Composable principal que define la estructura de la interfaz de usuario.
+ * Utiliza Scaffold para organizar la pantalla y llama al composable Greeting.
+ */
 @Composable
 fun AppContent() {
     Scaffold( // Proporciona una estructura básica para la pantalla
