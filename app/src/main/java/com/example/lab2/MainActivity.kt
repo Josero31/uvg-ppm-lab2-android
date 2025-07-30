@@ -31,6 +31,16 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
+fun AppContent() {
+    Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+        Greeting(
+            name = "Jose",
+            modifier = Modifier.padding(innerPadding)
+        )
+    }
+}
+
+@Composable
 fun Greeting(name: String , @SuppressLint("ModifierParameter") modifier: Modifier = Modifier) {
     Text(
         text = "Hello $name!",
