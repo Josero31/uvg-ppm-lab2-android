@@ -13,6 +13,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.lab2.ui.theme.Lab2Theme
 
+/**
+ * Actividad principal de la aplicación.
+ * Hereda de ComponentActivity para usar Jetpack Compose.
+ */
 class MainActivity : ComponentActivity() {
     /**
      * Método que se llama cuando la actividad es creada.
