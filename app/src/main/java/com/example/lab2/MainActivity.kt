@@ -1,17 +1,24 @@
 package com.example.lab2
 
-import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import com.example.lab2.ui.theme.Lab2Theme
+// Importaciones necesarias para la actividad y componentes de Jetpack Compose
+import android.annotation.SuppressLint // Permite suprimir advertencias específicas del compilador
+import android.os.Bundle // Proporciona la clase Bundle para pasar datos entre actividades
+import androidx.activity.ComponentActivity // Clase base para actividades que usan Compose
+import androidx.activity.compose.setContent // Permite definir el contenido de la actividad usando Compose
+import androidx.activity.enableEdgeToEdge // Habilita el modo edge-to-edge en la actividad
+import androidx.compose.foundation.layout.fillMaxSize // Modificador para que el componente ocupe todo el espacio disponible
+import androidx.compose.foundation.layout.padding // Modificador para agregar espacio alrededor de un componente
+import androidx.compose.material3.Scaffold // Componente de estructura básica para pantallas (barra superior, contenido, etc.)
+import androidx.compose.material3.Text // Componente para mostrar texto en pantalla
+import androidx.compose.runtime.Composable // Indica que una función es composable (puede usarse en Compose)
+import androidx.compose.ui.Modifier // Permite modificar el comportamiento y apariencia de los componentes
+import androidx.compose.ui.tooling.preview.Preview // Permite previsualizar composables en el editor
+import com.example.lab2.ui.theme.Lab2Theme // Importa el tema personalizado de la aplicación
+import androidx.compose.ui.graphics.Color // Importa el manejo de colores
+import androidx.compose.foundation.background // Importa el modificador de fondo
+import androidx.compose.ui.Alignment // Importa alineación para centrar el texto
+import androidx.compose.foundation.layout.fillMaxWidth // Importa modificador para ocupar todo el ancho
+import androidx.compose.foundation.layout.wrapContentWidth // Importa modificador para centrar contenido
 
 /**
  * Actividad principal de la aplicación.
