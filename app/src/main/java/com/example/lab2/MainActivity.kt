@@ -1,37 +1,49 @@
-package com.example.lab2 // Define el paquete donde se encuentra este archivo
+package com.example.lab2
 
-// Importaciones necesarias para la actividad y componentes de Jetpack Compose
-import android.os.Bundle // Proporciona la clase Bundle para pasar datos entre actividades
-import androidx.activity.ComponentActivity // Clase base para actividades que usan Compose
-import androidx.activity.compose.setContent // Permite definir el contenido de la actividad usando Compose
-import androidx.activity.enableEdgeToEdge // Habilita el modo edge-to-edge en la actividad
-import androidx.compose.foundation.background // Permite establecer un color de fondo
-import androidx.compose.foundation.layout.* // Proporciona modificadores de layout como Box, Column, Spacer, etc.
-import androidx.compose.material3.* // Proporciona componentes de Material3 como Button, Text, Scaffold, etc.
-import androidx.compose.runtime.* // Proporciona funciones y clases para manejar estados en Compose
-import androidx.compose.ui.Alignment // Permite alinear elementos dentro de layouts
-import androidx.compose.ui.Modifier // Permite modificar el comportamiento y apariencia de los componentes
-import androidx.compose.ui.graphics.Color // Permite trabajar con colores
-import androidx.compose.ui.tooling.preview.Preview // Permite previsualizar composables en el editor
-import androidx.compose.ui.unit.dp // Permite usar la unidad dp para medidas como padding
-import com.example.lab2.ui.theme.Lab2Theme // Importa el tema personalizado de la aplicación
-import kotlinx.coroutines.launch // Permite lanzar corutinas para tareas asíncronas
+import android.os.Bundle
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.*
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import com.example.lab2.ui.theme.Lab2Theme
+import kotlinx.coroutines.launch
 
 /**
  * Actividad principal de la aplicación.
- * Hereda de ComponentActivity para usar Jetpack Compose.
+ *
+ * Esta clase inicializa la interfaz de usuario usando Jetpack Compose y aplica el tema personalizado.
+ * El fondo de la pantalla se fuerza a celeste usando un Box raíz.
  */
 class MainActivity : ComponentActivity() {
     /**
-     * Método que se llama cuando la actividad es creada.
-     * @param savedInstanceState Estado guardado de la actividad (si existe).
+     * Método que se llama al crear la actividad.
+     *
+     * @param savedInstanceState Estado guardado de la actividad, si existe.
      */
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState) // Llama al método de la clase padre
-        enableEdgeToEdge() // Habilita el modo edge-to-edge para la interfaz
-        setContent { // Define el contenido de la actividad usando Compose
-            Lab2Theme { // Aplica el tema personalizado a la interfaz
-                AppContent() // Llama al composable principal que contiene la UI
+        super.onCreate(savedInstanceState)
+        setContent {
+            Lab2Theme {
+                /**
+                 * Box raíz que fuerza el fondo celeste en toda la pantalla.
+                 */
+                Box(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .background(Color.Cyan) // ¡Fondo celeste garantizado!
+                ) {
+                    /**
+                     * Composable principal que contiene la lógica de la pantalla.
+                     */
+                    AppContent()
+                }
             }
         }
     }
@@ -47,53 +59,59 @@ class MainActivity : ComponentActivity() {
  * - snackbarHostState: Estado para mostrar mensajes snackbar.
  * - scope: Corutina para lanzar tareas asíncronas.
  * - showText: Estado booleano que determina si se muestra el saludo o el botón.
- *
- * No recibe parámetros.
  */
 @Composable
 fun AppContent() {
-    val snackbarHostState = remember { SnackbarHostState() } // Estado para mostrar mensajes snackbar
-    val scope = rememberCoroutineScope() // Permite lanzar corutinas desde Compose
-    var showText by remember { mutableStateOf(false) } // Estado para mostrar el saludo
+    val snackbarHostState = remember { SnackbarHostState() }
+    val scope = rememberCoroutineScope()
+    var showText by remember { mutableStateOf(false) }
 
-    // Box que cubre toda la pantalla y aplica el fondo celeste
-    Box(
-        modifier = Modifier
-            .fillMaxSize() // Ocupa todo el espacio disponible
-            .background(Color.Cyan) // Aplica color de fondo celeste
-    ) {
-        // Scaffold organiza la estructura visual y permite mostrar snackbars
-        Scaffold(
-            snackbarHost = { SnackbarHost(snackbarHostState) }, // Host para mostrar mensajes snackbar
-        ) { innerPadding ->
-            // Box centrado en la parte superior para mostrar el botón o el saludo
-            Box(
-                modifier = Modifier
-                    .padding(innerPadding) // Aplica el padding interno del Scaffold
-                    .fillMaxSize(), // Ocupa todo el espacio disponible
-                contentAlignment = Alignment.TopCenter // Centra el contenido en la parte superior
-            ) {
-                if (showText) {
-                    // Si showText es true, muestra el saludo
-                    Greeting(
-                        name = "Jose", // Nombre que se mostrará en el saludo
-                        modifier = Modifier
-                            .padding(top = 64.dp) // Separa el saludo de la parte superior
+    /**
+     * Scaffold que organiza la estructura visual y permite mostrar snackbars.
+     * Se configura con fondo transparente para que el color celeste del Box raíz sea visible.
+     */
+    Scaffold(
+        modifier = Modifier.background(Color.Transparent), // Fondo transparente
+        containerColor = Color.Transparent, // Fondo transparente
+        snackbarHost = { SnackbarHost(snackbarHostState) }
+    ) { innerPadding ->
+        /**
+         * Box centrado en la parte superior para mostrar el botón o el saludo.
+         */
+        Box(
+            modifier = Modifier
+                .padding(innerPadding)
+                .fillMaxSize(),
+            contentAlignment = Alignment.TopCenter
+        ) {
+            if (showText) {
+                /**
+                 * Muestra el saludo si showText es true.
+                 */
+                Greeting(
+                    name = "Jose",
+                    modifier = Modifier.padding(top = 64.dp)
+                )
+            } else {
+                /**
+                 * Muestra el botón si showText es false.
+                 * El botón tiene color azul marino y texto blanco.
+                 * Al presionarlo, muestra el saludo y un snackbar.
+                 */
+                Button(
+                    onClick = {
+                        showText = true
+                        scope.launch {
+                            snackbarHostState.showSnackbar("¡Hola desde el botón!")
+                        }
+                    },
+                    modifier = Modifier.padding(top = 64.dp),
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = Color(0xFF0D47A1), // Azul marino
+                        contentColor = Color.White // Texto blanco
                     )
-                } else {
-                    // Si showText es false, muestra el botón
-                    Button(
-                        onClick = {
-                            showText = true // Cambia el estado para mostrar el saludo
-                            scope.launch {
-                                snackbarHostState.showSnackbar("¡Hola desde el botón!") // Muestra un mensaje snackbar
-                            }
-                        },
-                        modifier = Modifier
-                            .padding(top = 64.dp) // Separa el botón de la parte superior
-                    ) {
-                        Text("Aprime el botón ") // Texto del botón que se muestra en pantalla
-                    }
+                ) {
+                    Text("Presiona el botón")
                 }
             }
         }
@@ -102,17 +120,19 @@ fun AppContent() {
 
 /**
  * Composable que muestra un mensaje de saludo en pantalla.
+ *
  * @param name Nombre de la persona a saludar.
  * @param modifier Modificador para aplicar estilos o comportamientos al componente.
  */
 @Composable
 fun Greeting(
-    name: String, // Nombre que se mostrará en el saludo
-    modifier: Modifier = Modifier // Modificador opcional para el componente
+    name: String,
+    modifier: Modifier = Modifier
 ) {
-    Text( // Componente que muestra texto en pantalla
-        text = "Hello $name!", // Texto que se mostrará, incluyendo el nombre recibido
-        modifier = modifier // Aplica el modificador recibido como parámetro
+    Text(
+        text = "Hello $name!",
+        modifier = modifier,
+        color = Color.Black // Texto negro sobre cyan
     )
 }
 
@@ -120,10 +140,16 @@ fun Greeting(
  * Composable para previsualizar la interfaz en el editor de Android Studio.
  * Permite ver cómo se verá la pantalla sin ejecutar la app.
  */
-@Preview(showBackground = true) // Indica que se debe mostrar el fondo en la previsualización
+@Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
-    Lab2Theme { // Aplica el tema personalizado en la previsualización
-        AppContent() // Muestra el contenido principal de la app
+    Lab2Theme {
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(Color.Cyan)
+        ) {
+            AppContent()
+        }
     }
 }
