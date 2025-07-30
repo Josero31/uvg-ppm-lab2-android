@@ -32,10 +32,12 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun AppContent() {
-    Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-        Greeting(
-            name = "Jose",
-            modifier = Modifier.padding(innerPadding)
+    Scaffold( // Proporciona una estructura básica para la pantalla
+        modifier = Modifier.fillMaxSize() // Hace que el Scaffold ocupe todo el espacio disponible
+    ) { innerPadding -> // innerPadding es el espacio interno que Scaffold proporciona a su contenido
+        Greeting( // Llama al composable Greeting para mostrar el saludo
+            name = "Jose", // Parámetro que indica el nombre a mostrar en el saludo
+            modifier = Modifier.padding(innerPadding) // Aplica el padding proporcionado por Scaffold
         )
     }
 }
