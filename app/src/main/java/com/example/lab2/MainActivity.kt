@@ -19,6 +19,8 @@ import androidx.compose.foundation.background // Importa el modificador de fondo
 import androidx.compose.ui.Alignment // Importa alineación para centrar el texto
 import androidx.compose.foundation.layout.fillMaxWidth // Importa modificador para ocupar todo el ancho
 import androidx.compose.foundation.layout.wrapContentWidth // Importa modificador para centrar contenido
+import androidx.compose.ui.unit.dp // Importa la unidad dp para el padding
+import androidx.compose.foundation.layout.Box // Importa Box para envolver el contenido
 
 /**
  * Actividad principal de la aplicación.
@@ -46,15 +48,23 @@ class MainActivity : ComponentActivity() {
  */
 @Composable
 fun AppContent() {
-    Scaffold(
+    Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color.Cyan) // Aplica fondo celeste a toda la pantalla
-    ) { innerPadding -> // innerPadding es el espacio interno que Scaffold proporciona a su contenido
-        Greeting( // Llama al composable Greeting para mostrar el saludo
-            name = "Jose", // Parámetro que indica el nombre a mostrar en el saludo
-            modifier = Modifier.padding(innerPadding) // Aplica el padding proporcionado por Scaffold
-        )
+            .background(Color.Cyan) // Fondo celeste para toda la pantalla
+    ) {
+        Scaffold(
+            containerColor = Color.Transparent, // Hace el fondo del Scaffold transparente
+        ) { innerPadding -> // innerPadding es el espacio interno que Scaffold proporciona a su contenido
+            Greeting( // Llama al composable Greeting para mostrar el saludo
+                name = "Jose", // Parámetro que indica el nombre a mostrar en el saludo
+                modifier = Modifier
+                    .padding(innerPadding) // Aplica el padding proporcionado por Scaffold
+                    .fillMaxWidth()
+                    .wrapContentWidth(Alignment.CenterHorizontally) // Centra el texto horizontalmente
+                    .padding(top = 64.dp) // Baja el texto desde la parte superior
+            )
+        }
     }
 }
 
