@@ -59,6 +59,11 @@ class MainActivity : ComponentActivity() {
  * - snackbarHostState: Estado para mostrar mensajes snackbar.
  * - scope: Corutina para lanzar tareas asíncronas.
  * - showText: Estado booleano que determina si se muestra el saludo o el botón.
+ *
+ * Flujo de interacción:
+ * - Estado inicial: Se muestra el botón "Presiona el botón".
+ * - Al presionar el botón, se muestra el saludo y el botón "Volver" en la misma posición.
+ * - Al presionar "Volver", se regresa al estado inicial mostrando el botón original.
  */
 @Composable
 fun AppContent() {
@@ -86,17 +91,42 @@ fun AppContent() {
         ) {
             if (showText) {
                 /**
-                 * Muestra el saludo si showText es true.
+                 * Muestra el saludo y el botón "Volver" si showText es true.
+                 *
+                 * El botón "Volver" permite regresar al estado inicial mostrando el botón original.
                  */
-                Greeting(
-                    name = "Jose",
+                Column(
+                    horizontalAlignment = Alignment.CenterHorizontally,
                     modifier = Modifier.padding(top = 64.dp)
-                )
+                ) {
+                    Greeting(
+                        name = "Jose",
+                        modifier = Modifier
+                    )
+                    Spacer(modifier = Modifier.height(16.dp))
+                    /**
+                     * Botón que, al ser presionado, regresa al estado inicial (mostrando el botón original).
+                     *
+                     * @see showText Estado que controla la visibilidad del saludo y el botón.
+                     */
+                    Button(
+                        onClick = { showText = false },
+                        colors = ButtonDefaults.buttonColors(
+                            containerColor = Color(0xFF0D47A1), // Azul marino
+                            contentColor = Color.White // Texto blanco
+                        )
+                    ) {
+                        Text("Volver")
+                    }
+                }
             } else {
                 /**
                  * Muestra el botón si showText es false.
                  * El botón tiene color azul marino y texto blanco.
                  * Al presionarlo, muestra el saludo y un snackbar.
+                 *
+                 * @see showText Estado que controla la visibilidad del saludo y el botón.
+                 * @see snackbarHostState Estado para mostrar el mensaje snackbar.
                  */
                 Button(
                     onClick = {
