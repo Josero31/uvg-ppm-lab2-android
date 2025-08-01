@@ -42,5 +42,4 @@ A continuación se muestra un video demostrativo del funcionamiento de la aplica
 <<<<<<< HEAD
 El archivo de video se encuentra en el repositorio con el nombre `video-demo-lab2-android.mp4`.
 =======
-El archivo de video se encuentra en el repositorio con el nombre `Video Ejecucion lab #2.mp4`.
->>>>>>> origin/main
+
