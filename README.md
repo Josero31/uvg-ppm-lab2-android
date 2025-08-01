@@ -40,6 +40,6 @@ La aplicación se puede previsualizar usando la función `@Preview` en Android S
 
 A continuación se muestra un video demostrativo del funcionamiento de la aplicación:
 
-[![Demo Lab2 Android](https://img.youtube.com/vi/{ID_DEL_VIDEO}/0.jpg)](https://www.youtube.com/watch?v={ID_DEL_VIDEO})
+[Descargar o ver el video de demostración](./video-demo-lab2-android.mp4)
 
-<!-- Reemplaza {ID_DEL_VIDEO} con el identificador de tu video subido en YouTube o la plataforma correspondiente. Si el video está en otra plataforma, puedes poner el enlace directo. -->
+<!-- El archivo de video debe estar en la raíz del repositorio con el nombre "video-demo-lab2-android.mp4". -->
