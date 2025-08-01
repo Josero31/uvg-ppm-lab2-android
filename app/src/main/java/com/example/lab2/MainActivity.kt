@@ -12,6 +12,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.lab2.ui.theme.Lab2Theme
 import kotlinx.coroutines.launch
 
@@ -48,7 +49,6 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
-
 /**
  * Composable que muestra la pantalla principal de la aplicación.
  *
@@ -147,7 +147,6 @@ fun AppContent() {
         }
     }
 }
-
 /**
  * Composable que muestra un mensaje de saludo en pantalla.
  *
@@ -160,9 +159,13 @@ fun Greeting(
     modifier: Modifier = Modifier
 ) {
     Text(
-        text = "Hello $name!",
-        modifier = modifier,
-        color = Color.Black // Texto negro sobre cyan
+        text = "\n¡Hola, soy $name y este es mi lab #2!\n\n" +
+               "En este lab se muestra un botón que, al ser presionado, da un saludo y un snackbar para volver al estado inicial.",
+        modifier = modifier
+            .padding(horizontal = 24.dp, vertical = 16.dp), // Más espacio alrededor del texto
+        color = Color.Black,
+        fontSize = MaterialTheme.typography.titleMedium.fontSize, // Fuente más grande
+        lineHeight = 28.sp // Más espacio entre líneas
     )
 }
 
