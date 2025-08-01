@@ -35,3 +35,11 @@ Jose
 ## Vista previa
 
 La aplicación se puede previsualizar usando la función `@Preview` en Android Studio.
+
+## Demostración en video
+
+A continuación se muestra un video demostrativo del funcionamiento de la aplicación:
+
+[![Demo Lab2 Android](https://img.youtube.com/vi/{ID_DEL_VIDEO}/0.jpg)](https://www.youtube.com/watch?v={ID_DEL_VIDEO})
+
+<!-- Reemplaza {ID_DEL_VIDEO} con el identificador de tu video subido en YouTube o la plataforma correspondiente. Si el video está en otra plataforma, puedes poner el enlace directo. -->
