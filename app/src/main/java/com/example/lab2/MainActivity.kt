@@ -19,8 +19,8 @@ import kotlinx.coroutines.launch
 /**
  * Actividad principal de la aplicación.
  *
- * Esta clase inicializa la interfaz de usuario usando Jetpack Compose y aplica el tema personalizado.
- * El fondo de la pantalla se fuerza a celeste usando un Box raíz.
+ * <p>Esta clase inicializa la interfaz de usuario usando Jetpack Compose y aplica el tema personalizado.
+ * El fondo de la pantalla se fuerza a celeste usando un Box raíz.</p>
  */
 class MainActivity : ComponentActivity() {
     /**
@@ -49,21 +49,25 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
+
 /**
  * Composable que muestra la pantalla principal de la aplicación.
  *
- * Presenta un botón centrado en la parte superior. Al presionarlo, el botón es reemplazado por un saludo
- * en la misma posición y se muestra un mensaje tipo snackbar.
+ * <p>Presenta un botón centrado en la parte superior. Al presionarlo, el botón es reemplazado por un saludo
+ * en la misma posición y se muestra un mensaje tipo snackbar.</p>
  *
- * Variables internas:
- * - snackbarHostState: Estado para mostrar mensajes snackbar.
- * - scope: Corutina para lanzar tareas asíncronas.
- * - showText: Estado booleano que determina si se muestra el saludo o el botón.
+ * <ul>
+ *   <li><b>snackbarHostState</b>: Estado para mostrar mensajes snackbar.</li>
+ *   <li><b>scope</b>: Corutina para lanzar tareas asíncronas.</li>
+ *   <li><b>showText</b>: Estado booleano que determina si se muestra el saludo o el botón.</li>
+ * </ul>
  *
- * Flujo de interacción:
- * - Estado inicial: Se muestra el botón "Presiona el botón".
- * - Al presionar el botón, se muestra el saludo y el botón "Volver" en la misma posición.
- * - Al presionar "Volver", se regresa al estado inicial mostrando el botón original.
+ * <p>Flujo de interacción:</p>
+ * <ol>
+ *   <li>Estado inicial: Se muestra el botón "Presiona el botón".</li>
+ *   <li>Al presionar el botón, se muestra el saludo y el botón "Volver" en la misma posición.</li>
+ *   <li>Al presionar "Volver", se regresa al estado inicial mostrando el botón original.</li>
+ * </ol>
  */
 @Composable
 fun AppContent() {
@@ -147,11 +151,14 @@ fun AppContent() {
         }
     }
 }
+
 /**
  * Composable que muestra un mensaje de saludo en pantalla.
  *
  * @param name Nombre de la persona a saludar.
  * @param modifier Modificador para aplicar estilos o comportamientos al componente.
+ *
+ * <p>El texto se muestra con mayor tamaño de fuente, mayor espaciado entre líneas y padding adicional para mejorar la legibilidad.</p>
  */
 @Composable
 fun Greeting(
@@ -171,7 +178,8 @@ fun Greeting(
 
 /**
  * Composable para previsualizar la interfaz en el editor de Android Studio.
- * Permite ver cómo se verá la pantalla sin ejecutar la app.
+ *
+ * <p>Permite ver cómo se verá la pantalla sin ejecutar la app.</p>
  */
 @Preview(showBackground = true)
 @Composable
